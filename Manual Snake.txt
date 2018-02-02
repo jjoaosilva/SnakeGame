@@ -22,6 +22,3 @@ Direcional para cima     : Cima
 Direcional para baixo    : Baixo
 direcional para esquerda : Esquerda
 Direcional para direita  : Direita
-
-Rafael Coelho Silva - 20151015020304
-José João Silva Nunes Alves - 20151015020207
