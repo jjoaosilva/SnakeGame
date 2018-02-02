@@ -1,0 +1,27 @@
+Para ajustar a velocidade da snake, é necessario que:
+
+1 - Ferramentas
+2 - Preferências
+3 - Vá para a aba ' Geral '
+Coloque o cursor:
+Fácil : 85
+Médio : 90
+Dificil: 95
+
+Para ajustar a tela:
+
+1 - Ferramentas
+2 - Preferências
+3 - Vá para a aba ' Opções '
+No campo ' Tamanho da jenela gráfica ' ajuste para : 1000x1000.
+No campo ' Moldura ' clique em ' Outro ' e mude cor uniforme para preto.
+
+Controles:
+
+Direcional para cima     : Cima
+Direcional para baixo    : Baixo
+direcional para esquerda : Esquerda
+Direcional para direita  : Direita
+
+Rafael Coelho Silva - 20151015020304
+José João Silva Nunes Alves - 20151015020207

@@ -1,0 +1,460 @@
+# Comando principal: iniciar_jogo
+aprenda iniciar_jogo
+
+# Reinicia tudo do logo e tira o limite da borda e cria o primeiro ponto
+ld 
+semlimite
+mudezoom 0.51200000000000002
+toquemp3 "jogo.mp3
+# Settings iniciais da Atat 0 
+atat 0
+escondetat
+usenada
+ 
+# Settings iniciais da Atat 1
+atat 1
+mostretat
+escondetat
+mudecordolápis branco
+mudeespessuradolápis 55
+
+# Settings iniciais da Atat 2
+atat 2
+escondetat
+usenada
+muderoupa (sorteie 4)+1
+
+# Settings iniciais da Atat 3
+atat 3
+escondetat
+usenada
+
+
+# Settings iniciais da Atat 4
+atat 4
+escondetat
+usenada
+mudexy -499 499
+pd 90
+carimg "inicio.jpg
+atribua "flag_inicio 0
+
+enquanto [:flag_inicio=0]
+ [
+     
+     interrupção_teclado
+ ]
+
+# Settings iniciais da Atat 5
+atat 5
+escondetat
+usenada
+mudexy -495 495
+pd 90
+carimg "game.jpg
+
+# Settings iniciais da Atat 5
+atat 6
+escondetat
+usenada
+
+sorteie_ponto
+
+# Variáveis Globais
+atribua "num 0  # Iniciando Pontuação no 0
+atribua "ctrl 0 #    Controle do tamanho da snake
+atribua "posi 0 #  Posição do vetor 
+atribua "aux2 0 # Posição atual atat 1
+atribua "aux1 0 # Posição atual atat 0
+atribua "flag 0 # Flag de gravação na posição do vetor 0 --> Não é pra gravar / 1 --> Grava
+atribua "localização 0 #guarda a localização da atat 2
+atribua "quadrante 0 #sorteia o quadrante que o ponto aparecerá
+atribua "game 0
+atribua "posx 0
+atribua "posy 0
+atribua "sair 0 # Flag para sair do jogo pressionando esc
+atribua "vasculhar 0
+atribua "bate 0
+atribua "aux3 0
+atribua "aux4 0
+
+
+
+# Criando a snake com 5 balls
+repita 5[
+snake0
+atr "ctrl :ctrl+1
+]
+
+# Loop do jogo
+
+enquanto [:sair = 0] [
+  interrupção_teclado
+  andar
+  incrementa_snake
+  win
+  game_over
+  game_over2
+
+ ]
+
+fim
+
+#*********************************************************************  MOVIMENTAÇÃO ******************************************************************************#
+aprenda snake0
+
+atat 0
+círculo 25 pinte 
+parafrente 50
+atr "aux1 :aux1+1
+se :aux1 = 49 [atribua "aux1 1]
+vetor_posição :aux1 1
+
+fim
+
+aprenda snake1
+
+atat 1
+atr "aux2 :aux2 + 1
+se :aux2 = 49 [atribua "aux2 1]
+atr "lixo vetor_posição :aux2 0
+mudexy (elemento 1 :lixo) (elemento 2 :lixo)
+
+
+fim
+
+aprenda andar
+
+snake0
+snake1
+
+fim
+
+aprenda direita
+
+atat 0
+paradireita 90
+andar
+
+fim
+
+aprenda esquerda
+
+atat 0
+paraesquerda 90
+andar
+
+fim
+
+aprenda interrupção_teclado
+
+atat 0
+se étecla? [
+
+  atr "car leiacar 
+  
+  se :car=-37 [se direção = 180 [direita] [esquerda ] ]                                   #esquerda
+  se :car=-39 [se direção = 180 [esquerda ] [direita ] ]                                  #direita
+  se :car=-38 [ se direção = 90 [esquerda ] se direção = 270  [direita ] ]   #cima
+  se :car=-40 [se direção = 90 [direita ] se direção =  270  [esquerda ] ]   #baixo
+  se :car= 27 [ atr "sair 1 paremp3 ]                                                                                                      #sair do jogo
+  se :car = 32 [atr "flag_inicio 1]
+]
+fim
+
+
+aprenda mapa
+
+
+fim
+
+
+#*********************************************************************  VETOR  ******************************************************************************#
+aprenda vetor_posição :posi :flag
+
+se :posi = 1 [se :flag = 0 [saída :a] [atr "a pos]]
+se :posi = 2 [se :flag = 0 [saída :b] [atr "b pos]]
+se :posi = 3 [se :flag = 0 [saída :c] [atr "c pos]]
+se :posi = 4 [se :flag = 0 [saída :d] [atr "d pos]]
+
+se :posi = 5 [se :flag = 0 [saída :e] [atr "e pos]]
+se :posi = 6 [se :flag = 0 [saída :f] [atr "f pos]]
+se :posi = 7 [se :flag = 0 [saída :g] [atr "g pos]]
+se :posi = 8 [se :flag = 0 [saída :h] [atr "h pos]]
+
+se :posi = 9 [se :flag = 0 [saída :i] [atr "i pos]]
+se :posi = 10 [se :flag = 0 [saída :j] [atr "j pos]]
+se :posi = 11 [se :flag = 0 [saída :k] [atr "k pos]]
+se :posi = 12  [se :flag = 0 [saída :l] [atr "l pos]]
+
+se :posi = 13[se :flag = 0 [saída :m] [atr "m pos]]
+se :posi = 14 [se :flag = 0 [saída :n] [atr "n pos]]
+se :posi = 15 [se :flag = 0 [saída :o] [atr "o pos]]
+se :posi = 16 [se :flag = 0 [saída :p] [atr "p pos]]
+
+se :posi = 17 [se :flag = 0 [saída :q] [atr "q pos]]
+se :posi = 18 [se :flag = 0 [saída :r] [atr "r pos]]
+se :posi = 19 [se :flag = 0 [saída :s] [atr "s pos]]
+se :posi = 20 [se :flag = 0 [saída :t] [atr "t pos]]
+
+se :posi = 21 [se :flag = 0 [saída :u] [atr "u pos]]
+se :posi = 22 [se :flag = 0 [saída :v] [atr "v pos]]
+se :posi = 23 [se :flag = 0 [saída :w] [atr "w pos]]
+se :posi = 24 [se :flag = 0 [saída :y] [atr "y pos]]
+
+se :posi = 25 [se :flag = 0 [saída :x] [atr "x pos]]
+se :posi = 26 [se :flag = 0 [saída :z] [atr "z pos]]
+se :posi = 27 [se :flag = 0 [saída :aa] [atr "aa pos]]
+se :posi = 28 [se :flag = 0 [saída :bb] [atr "bb pos]]
+
+se :posi = 29 [se :flag = 0 [saída :cc] [atr "cc pos]]
+se :posi = 30 [se :flag = 0 [saída :dd] [atr "dd pos]]
+se :posi = 31 [se :flag = 0 [saída :ee] [atr "ee pos]]
+se :posi = 32 [se :flag = 0 [saída :ff] [atr "ff pos]]
+
+se :posi = 33 [se :flag = 0 [saída :gg] [atr "gg pos]]
+se :posi = 34 [se :flag = 0 [saída :hh] [atr "hh pos]]
+se :posi = 35 [se :flag = 0 [saída :ii] [atr "ii pos]]
+se :posi = 36 [se :flag = 0 [saída :jj] [atr "jj pos]]
+
+se :posi = 37 [se :flag = 0 [saída :kk] [atr "kk pos]]
+se :posi = 38 [se :flag = 0 [saída :ll] [atr "ll pos]]
+se :posi = 39 [se :flag = 0 [saída :mm] [atr "mm pos]]
+se :posi = 40 [se :flag = 0 [saída :nn] [atr "nn pos]]
+
+se :posi = 41 [se :flag = 0 [saída :oo] [atr "oo pos]]
+se :posi = 42 [se :flag = 0 [saída :pp] [atr "pp pos]]
+se :posi = 43 [se :flag = 0 [saída :qq] [atr "qq pos]]
+se :posi =44 [se :flag = 0 [saída :rr] [atr "rr pos]]
+
+se :posi = 45 [se :flag = 0 [saída :ss] [atr "ss pos]]
+se :posi = 46 [se :flag = 0 [saída :tt] [atr "tt pos]]
+se :posi = 47 [se :flag = 0 [saída :uu] [atr "uu pos]]
+se :posi = 48 [se :flag = 0 [saída :vv] [atr "vv pos]]
+
+fim
+
+aprenda incrementa_snake
+
+atat 2
+atr "localização pos
+
+atat 0
+atr "teste distância :localização
+se :teste < 60
+ [
+  snake0
+  sorteie_ponto
+  atr "ctrl :ctrl+1
+]
+
+fim
+
+#*********************************************************************  PONTOS ******************************************************************************#
+aprenda pontos0
+
+  atat 2
+  mostretat
+  usenada
+  mudexy (sorteie 430 )  (sorteie 430) 
+
+fim
+
+aprenda pontos1
+
+atat 2
+mostretat
+usenada
+mudexy (sorteie 431 *-1)  (sorteie 430) 
+
+
+fim
+
+aprenda pontos2
+
+atat 2
+mostretat
+usenada
+mudexy (sorteie 431 *-1)  (sorteie 431*-1) 
+
+fim
+
+aprenda pontos3
+
+atat 2
+mostretat
+usenada
+mudexy (sorteie 431)  (sorteie 431*-1) 
+
+fim
+
+aprenda sorteie_ponto
+
+atribua "quadrante sorteie 4
+
+se :quadrante = 0 [pontos0]
+se :quadrante = 1 [pontos1]
+se :quadrante = 2 [pontos2]
+se :quadrante = 3 [pontos3]
+
+fim
+
+#********************************************************************* GAME OVER ******************************************************************************#
+
+aprenda game_over
+
+atat 0
+atr "game pos
+atr "posx elemento 1 :game
+atr "posy elemento 2 :game
+
+se :posx > 440
+[ 
+atat 3
+mudexy -499 499
+pd 90
+carimg "gameover.jpg
+atr "sair 1 
+toquemp3 "inicio.mp3
+
+          atat 6
+          mudecl branco
+          mudexy (300* -1) (300* -1)
+          mudefonte 100   
+          rotule [ Pontos : ]
+          mudexy 100 (300*-1)
+          rotule :pontuação
+]
+se :posy > 440
+[ 
+atat 3
+mudexy -499 499
+pd 90
+carimg "gameover.jpg
+atr "sair 1 
+toquemp3 "inicio.mp3
+
+          atat 6
+          mudecl branco
+          mudexy (300* -1) (300* -1)
+          mudefonte 100   
+          rotule [ Pontos : ]
+          mudexy 100 (300*-1)
+          rotule :pontuação
+] 
+se :posx < -440
+[
+atat 3
+mudexy -499 499
+pd 90
+carimg "gameover.jpg
+atr "sair 1 
+toquemp3 "inicio.mp3
+
+         atat 6
+          mudecl branco
+          mudexy (300* -1) (300* -1)
+          mudefonte 100   
+          rotule [ Pontos : ]
+          mudexy 100 (300*-1)
+          rotule :pontuação
+] 
+se :posy < -440
+[ 
+atat 3
+mudexy -499 499
+pd 90
+carimg "gameover.jpg
+atr "sair 1 
+toquemp3 "inicio.mp3
+
+          atat 6
+          mudecl branco
+          mudexy (300* -1) (300* -1)
+          mudefonte 100   
+          rotule [ Pontos : ]
+          mudexy 100 (300*-1)
+          rotule :pontuação
+] 
+
+fim
+
+aprenda gameover1
+
+repita :ctrl
+ [
+    atr "vasculhar :vasculhar+1
+    atr "controle vetor_posição :vasculhar 0
+    atat 0
+    atr "aux3 distância :controle 
+    se :controle < 20 
+    [
+      atat 3
+      mudexy -499 499
+      pd 90
+      carimg "gameover.jpg
+      atr "sair 1 
+      toquemp3 "inicio.mp3
+    ]
+     
+
+fim
+
+
+aprenda game_over2
+
+se :ctrl > 7
+ [
+      atr "aux4 :aux2
+    repita :ctrl-7
+     [
+        atr "vasculhar vetor_posição :aux4 0
+    
+        atat 0
+        atr "aux3 (distância :vasculhar)        
+        se :aux3 < 30
+        [
+         atat 3
+         mudexy -499 499
+          pd 90
+          carimg "gameover.jpg
+          atr "sair 1 
+          toquemp3 "inicio.mp3
+          
+          atat 6
+          mudecl branco
+          mudexy (300* -1) (300* -1)
+          mudefonte 100   
+          rotule [ Pontos : ]
+          mudexy 100 (300*-1)
+          rotule :pontuação
+        ]
+      atr "aux4 :aux4+1
+       se :aux4 = 49 [atribua "aux4 1]
+    ]   
+]
+
+fim
+
+aprenda win
+
+atr "pontuação ( :ctrl*123)
+se :ctrl > 10
+ [
+          atat 3
+          mudexy -499 499
+          pd 90
+          carimg "congrat.jpg
+          atr "sair 1 
+          toquemp3 "inicio.mp3
+          
+          atat 6
+          mudecl preto
+          mudexy (300* -1) (300* -1)
+          mudefonte 100   
+          rotule [ Pontos : ]
+          mudexy 100 (300*-1)
+          rotule :pontuação
+]
+
+fim
